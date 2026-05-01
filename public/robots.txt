@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /convex/
+Disallow: /*.js.map$
+
+Sitemap: https://sktalreja.me/sitemap.xml

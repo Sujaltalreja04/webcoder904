@@ -1,0 +1,11 @@
+/* TEAM */
+  Name: Sujal Kishore Kumar Talreja
+  Role: AI & LLM Engineer | Full-Stack Developer
+  Contact: sujaltalreja04@gmail.com
+  Site: https://sktalreja.me/
+
+/* SITE */
+  Last update: 2026-03-31
+  Standards: HTML5, CSS3, JSON-LD
+  Components: React, Vite, TailwindCSS, Three.js
+  Software: VS Code

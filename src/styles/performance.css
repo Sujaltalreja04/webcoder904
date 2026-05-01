@@ -1,0 +1,318 @@
+/* Performance-Optimized CSS */
+
+/* Enable GPU acceleration for transforms and opacity */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimize animations to use only transform and opacity */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-30px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(30px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Optimize font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Contain layout shifts */
+.contain-layout {
+    contain: layout;
+}
+
+.contain-paint {
+    contain: paint;
+}
+
+.contain-strict {
+    contain: strict;
+}
+
+/* Optimize images */
+img {
+    content-visibility: auto;
+}
+
+/* Lazy load images */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Optimize scrolling performance */
+.scroll-container {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+}
+
+/* Optimize transforms */
+.transform-optimized {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Reduce paint areas */
+.isolate {
+    isolation: isolate;
+}
+
+/* Optimize backdrop filters */
+.backdrop-blur-optimized {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    will-change: backdrop-filter;
+}
+
+/* Performance-friendly shadows */
+.shadow-optimized {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* Avoid using filter: drop-shadow() for better performance */
+}
+
+/* Optimize hover effects */
+.hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05) translateZ(0);
+}
+
+/* Optimize focus states */
+.focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition: outline-color 0.15s ease-in-out;
+}
+
+.focus-ring:focus {
+    outline-color: #3b82f6;
+}
+
+/* Content visibility for off-screen content */
+.content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize grid layouts */
+.grid-optimized {
+    display: grid;
+    contain: layout style;
+}
+
+/* Optimize flex layouts */
+.flex-optimized {
+    display: flex;
+    contain: layout style;
+}
+
+/* Prevent layout shifts with aspect ratio */
+.aspect-ratio-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-1-1 {
+    aspect-ratio: 1 / 1;
+}
+
+.aspect-ratio-4-3 {
+    aspect-ratio: 4 / 3;
+}
+
+/* Optimize text selection */
+::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: inherit;
+}
+
+/* Optimize scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Optimize loading states */
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Optimize button interactions */
+.button-optimized {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.button-optimized:active {
+    transform: scale(0.95) translateZ(0);
+}
+
+/* Optimize modal/overlay performance */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    will-change: opacity;
+    contain: strict;
+}
+
+/* Optimize card components */
+.card-optimized {
+    contain: layout style paint;
+    will-change: transform;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.no-fouc {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.no-fouc.loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Optimize video elements */
+video {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize iframe elements */
+iframe {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* Hardware acceleration for 3D transforms */
+.hw-accelerated {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Optimize gradients */
+.gradient-optimized {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.4));
+    /* Avoid complex gradients with many color stops */
+}
+
+/* Print optimization */
+@media print {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}

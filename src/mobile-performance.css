@@ -1,0 +1,181 @@
+/* Mobile Performance Optimizations */
+
+/* Enable hardware acceleration for smooth animations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize touch interactions */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Mobile devices */
+    * {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* Reduce motion for better performance on mobile */
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Optimize scrolling */
+    body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+    }
+
+    /* Disable hover effects on mobile */
+    button:hover,
+    a:hover,
+    .hover\:scale-105:hover {
+        transform: none;
+    }
+
+    /* Reduce blur effects on mobile for better performance */
+    .backdrop-blur-md,
+    .backdrop-blur-lg,
+    .backdrop-blur-xl {
+        backdrop-filter: blur(4px);
+    }
+
+    /* Optimize animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Reduce shadow complexity on mobile */
+    .shadow-2xl,
+    .shadow-xl {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Desktop optimizations */
+@media (hover: hover) and (pointer: fine) {
+
+    /* Enable smooth scrolling on desktop */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Better hover states */
+    button,
+    a {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Performance hints for browsers */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* Optimize images */
+img {
+    content-visibility: auto;
+}
+
+/* Reduce layout shifts */
+.aspect-video,
+.aspect-square {
+    content-visibility: auto;
+}
+
+/* GPU acceleration for common animated elements */
+.motion-safe\:animate-pulse,
+.animate-spin,
+.animate-bounce {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimize framer-motion animations */
+[data-framer-component-type] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Reduce repaints */
+.fixed,
+.sticky {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Mobile-specific font optimizations */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Reduce font weight on mobile for faster rendering */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 700;
+    }
+
+    /* Optimize canvas rendering */
+    canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Optimize 3D transforms */
+.transform-3d {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Lazy loading optimization */
+.lazy-load {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+}
+
+/* Reduce paint areas */
+.isolate {
+    isolation: isolate;
+}
+
+/* Optimize backdrop filters */
+@supports (backdrop-filter: blur(10px)) {
+    .backdrop-blur {
+        backdrop-filter: blur(10px);
+    }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    .backdrop-blur {
+        background-color: rgba(26, 26, 26, 0.9);
+    }
+}

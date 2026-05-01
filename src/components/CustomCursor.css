@@ -1,0 +1,126 @@
+/* Hide default cursor */
+* {
+    cursor: none !important;
+}
+
+body,
+body * {
+    cursor: none !important;
+}
+
+/* Main Arrow Cursor - Sleek and Fast */
+.cursor-arrow {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.08s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 8px rgba(192, 192, 192, 0.4));
+}
+
+.cursor-arrow svg {
+    display: block;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+/* Follower Ring - Appears on hover */
+.cursor-follower {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(192, 192, 192, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow:
+        0 0 12px rgba(192, 192, 192, 0.4),
+        inset 0 0 8px rgba(192, 192, 192, 0.2);
+    animation: follower-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes follower-pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Click Ripple Effect */
+.cursor-ripple {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(192, 192, 192, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: ripple-expand 0.4s ease-out forwards;
+}
+
+@keyframes ripple-expand {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Prevent cursor elements from blocking interactions */
+.cursor-arrow,
+.cursor-follower,
+.cursor-ripple {
+    pointer-events: none !important;
+}
+
+/* Smooth rendering optimization */
+.cursor-arrow,
+.cursor-follower,
+.cursor-ripple {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: center center;
+}
+
+/* Responsive - disable on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor-arrow,
+    .cursor-follower,
+    .cursor-ripple {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+
+    body,
+    body * {
+        cursor: auto !important;
+    }
+}
+
+/* Performance optimization - reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+    .cursor-arrow,
+    .cursor-follower,
+    .cursor-ripple {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Improve scroll performance */
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.5;
+  /* Improve scroll performance */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enhanced smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  /* Improve mobile scroll performance */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+/* Enhanced 3D performance */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Custom scrollbar with better performance */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #606060;
+}
+
+/* Scroll margin for section navigation */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 768px) {
+    .motion-base {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  }
+}
+/* Accessibility improvements */
