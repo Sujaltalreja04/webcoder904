@@ -12,10 +12,10 @@ export const SEO = ({
     title, 
     description, 
     canonicalUrl,
-    ogImage = 'https://sktalreja.me/og-image.png',
+    ogImage = 'https://www.sktalreja.me/og-image.png',
     ogType = 'website'
 }: SEOProps) => {
-    const siteUrl = 'https://sktalreja.me';
+    const siteUrl = 'https://www.sktalreja.me';
     const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
     const url = canonicalUrl || `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
     
