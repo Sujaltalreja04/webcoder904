@@ -5,4 +5,4 @@ Disallow: /.git/
 Disallow: /convex/
 Disallow: /*.js.map$
 
-Sitemap: https://sktalreja.me/sitemap.xml
+Sitemap: https://www.sktalreja.me/sitemap.xml
