@@ -1,6 +1,13 @@
 {
     "redirects": [
-        { "source": "/(.*)", "destination": "https://www.sktalreja.me/:1", "permanent": true }
+        {
+            "source": "/(.*)",
+            "destination": "https://www.sktalreja.me/:1",
+            "permanent": true,
+            "has": [
+                { "type": "host", "value": "sktalreja.me" }
+            ]
+        }
     ],
     "routes": [
         {
@@ -10,7 +17,7 @@
                 "Content-Type": "application/xml"
             }
         },
-        {
+        { 
             "src": "/robots.txt",
             "dest": "/robots.txt",
             "headers": {
