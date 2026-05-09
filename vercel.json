@@ -1,8 +1,8 @@
 {
     "redirects": [
         {
-            "source": "/(.*)",
-            "destination": "https://www.sktalreja.me/:1",
+            "source": "/:path*",
+            "destination": "https://www.sktalreja.me/:path*",
             "permanent": true,
             "has": [
                 { "type": "host", "value": "sktalreja.me" }
